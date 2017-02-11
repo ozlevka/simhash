@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 from unittest import main, TestCase
+from elasticsearch import Elasticsearch
+
+
+CLIENT = Elasticsearch()
 
 
 class TestElastic(TestCase):
