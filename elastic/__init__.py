@@ -33,3 +33,6 @@ class ElasticOperations():
         :return: List of tokens
         '''
         return analyze_text(text, self.client)
+
+    def setup_analytics_indexes(self, es_client):
+        pass

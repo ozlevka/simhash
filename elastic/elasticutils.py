@@ -1,15 +1,11 @@
 
 from elasticsearch.client import IndicesClient
 
-STEM_INDEX = 'morphology'
-ANALYZER_INDEX = 'analisis'
-ANALYZER_NAME = 'clear'
 
-
-def query_stem_index(tokens, es_client):
+def query_stem_index(tokens, es_client, stem_index='morphology'):
     result = []
     for token in tokens:
-        search_res = es_client.search(index=STEM_INDEX,doc_type='word', body={
+        search_res = es_client.search(index=stem_index,doc_type='word', body={
                     "query": {
                       "term": {
                         "word": {
@@ -26,8 +22,8 @@ def query_stem_index(tokens, es_client):
     return result
 
 
-def analyze_text(text, es_client):
+def analyze_text(text, es_client, analyzer_index='analisis', analazer_name='clean'):
     analyze_client = IndicesClient(client=es_client)
-    res = analyze_client.analyze(index=ANALYZER_INDEX, analyzer=ANALYZER_NAME, body=text)
+    res = analyze_client.analyze(index=analyzer_index, analyzer=analazer_name, body=text)
 
     return [x['token'] for x in res['tokens']]

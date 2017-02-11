@@ -9,7 +9,8 @@
           "tokenizer": "standard",
           "filter": [
             "lowercase",
-            "hebrew_stop"
+            "hebrew_stop",
+            "english_stop"
           ]
         }
       },
@@ -521,6 +522,10 @@
         "english_stop": {
           "type": "stop",
           "stopwords": "_english_"
+        },
+        "english_special": {
+          "type": "stop",
+          "stopwords": ["me"]
         }
       }
     }
