@@ -36,3 +36,9 @@ class ElasticOperations():
 
     def setup_analytics_indexes(self, es_client):
         pass
+
+    def get_word_frequency(self, word):
+        return get_word_frequency(self.client, word)
+
+    def analyze_with_idf(self, text):
+        return analyze_text_and_make_freq_pairs(self.client, text)
